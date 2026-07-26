@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const categoryFilters = document.querySelectorAll(".category-filter");
   const dayFilters = document.querySelectorAll(".day-filter");
   const timeFilters = document.querySelectorAll(".time-filter");
+  const groupByFilters = document.querySelectorAll(".group-by-filter");
 
   // Authentication elements
   const loginButton = document.getElementById("login-button");
@@ -40,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let searchQuery = "";
   let currentDay = "";
   let currentTimeRange = "";
+  let currentGroupBy = "";
 
   // Authentication state
   let currentUser = null;
@@ -466,10 +468,38 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Display filtered activities
-    Object.entries(filteredActivities).forEach(([name, details]) => {
-      renderActivityCard(name, details);
-    });
+    // Display filtered activities, optionally grouped
+    if (currentGroupBy === "category") {
+      // Group activities by category
+      const grouped = {};
+      Object.entries(filteredActivities).forEach(([name, details]) => {
+        const activityType = getActivityType(name, details.description);
+        if (!grouped[activityType]) {
+          grouped[activityType] = {};
+        }
+        grouped[activityType][name] = details;
+      });
+
+      // Render each group with a header
+      Object.entries(grouped).forEach(([type, activities]) => {
+        const typeInfo = activityTypes[type];
+        const groupHeader = document.createElement("div");
+        groupHeader.className = "activity-group-header";
+        groupHeader.style.backgroundColor = typeInfo.color;
+        groupHeader.style.color = typeInfo.textColor;
+        groupHeader.textContent = typeInfo.label;
+        activitiesList.appendChild(groupHeader);
+
+        Object.entries(activities).forEach(([name, details]) => {
+          renderActivityCard(name, details);
+        });
+      });
+    } else {
+      // Display without grouping
+      Object.entries(filteredActivities).forEach(([name, details]) => {
+        renderActivityCard(name, details);
+      });
+    }
   }
 
   // Function to render a single activity card
@@ -638,6 +668,19 @@ document.addEventListener("DOMContentLoaded", () => {
       // Update current time filter and fetch activities
       currentTimeRange = button.dataset.time;
       fetchActivities();
+    });
+  });
+
+  // Add event listeners for group by buttons
+  groupByFilters.forEach((button) => {
+    button.addEventListener("click", () => {
+      // Update active class
+      groupByFilters.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      // Update group by state and re-display activities
+      currentGroupBy = button.dataset.group;
+      displayFilteredActivities();
     });
   });
 
