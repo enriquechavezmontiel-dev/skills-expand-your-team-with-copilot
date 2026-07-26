@@ -2,6 +2,7 @@
 :root {
   /* Primary colors */
   --primary: #7ac943;
+  --primary-rgb: 122, 201, 67;
   --primary-light: #9fe06a;
   --primary-dark: #5da12f;
   --primary-text: #173d0f;
@@ -43,15 +44,15 @@ html {
   background-color: var(--background);
   background-image: linear-gradient(
       115deg,
-      rgba(122, 201, 67, 0.18) 0%,
-      rgba(122, 201, 67, 0.18) 2px,
+      rgba(var(--primary-rgb), 0.18) 0%,
+      rgba(var(--primary-rgb), 0.18) 2px,
       transparent 2px,
       transparent 95px
     ),
     linear-gradient(
       65deg,
-      rgba(122, 201, 67, 0.14) 0%,
-      rgba(122, 201, 67, 0.14) 2px,
+      rgba(var(--primary-rgb), 0.14) 0%,
+      rgba(var(--primary-rgb), 0.14) 2px,
       transparent 2px,
       transparent 120px
     );
@@ -117,6 +118,14 @@ section h3 {
 
 .mascot-showcase {
   margin-bottom: 15px;
+}
+
+.mascot-showcase h2 {
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  color: var(--primary);
+  font-size: 1.1rem;
 }
 
 .mascot-gallery {
