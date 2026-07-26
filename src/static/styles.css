@@ -539,7 +539,8 @@ footer {
 
 .category-filters,
 .day-filters,
-.time-filters {
+.time-filters,
+.group-by-filters {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
@@ -547,7 +548,8 @@ footer {
 
 .category-filter,
 .day-filter,
-.time-filter {
+.time-filter,
+.group-by-filter {
   background-color: var(--background);
   border: 1px solid var(--border);
   color: var(--text-primary);
@@ -560,7 +562,8 @@ footer {
 
 .category-filter.active,
 .day-filter.active,
-.time-filter.active {
+.time-filter.active,
+.group-by-filter.active {
   background-color: var(--primary);
   color: white;
   border-color: var(--primary-dark);
@@ -568,13 +571,30 @@ footer {
 
 .category-filter:hover,
 .day-filter:hover,
-.time-filter:hover {
+.time-filter:hover,
+.group-by-filter:hover {
   background-color: var(--primary-light);
   color: white;
 }
 
 .time-filters {
   width: 100%;
+}
+
+/* Activity group header for "Group By" display */
+.activity-group-header {
+  grid-column: 1 / -1;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 8px;
+}
+
+.activity-group-header:first-child {
+  margin-top: 0;
 }
 
 .reset-button {
