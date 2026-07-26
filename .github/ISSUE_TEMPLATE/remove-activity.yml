@@ -1,0 +1,57 @@
+name: Remove an Activity
+description: Request that an existing extracurricular activity be removed from the system
+title: "Remove Activity: [Activity Name]"
+labels: ["activities"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to request the removal of an existing activity. Please make sure students are notified before submitting this request, as removal will prevent new sign-ups and erase the current participant list.
+
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: The exact name of the activity to be removed, as it currently appears in the system.
+      placeholder: e.g., Chess Club
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Removal
+      description: Briefly explain why this activity should be removed.
+      placeholder: e.g., The sponsoring teacher has left the school and no replacement has been found.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      description: Please confirm the following before submitting.
+      options:
+        - label: Students currently enrolled in this activity have been notified of its removal.
+          required: true
+        - label: I understand that removing the activity will permanently delete all participant data for this activity.
+          required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: How will you know the change has been correctly implemented?
+      value: |
+        - [ ] The activity no longer appears on the activities page
+        - [ ] Students can no longer sign up for the removed activity
+        - [ ] No other activities were affected
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other relevant information (e.g., whether a replacement activity is being planned).
+      placeholder: e.g., A new "Photography Club" will be created separately to replace this activity.

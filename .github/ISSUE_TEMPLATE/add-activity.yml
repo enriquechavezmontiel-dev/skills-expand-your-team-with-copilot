@@ -1,0 +1,89 @@
+name: Add New Activity
+description: Request a new extracurricular activity to be added to the system
+title: "Add Activity: [Activity Name]"
+labels: ["enhancement", "activities"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to request a new extracurricular activity. Fill in all fields as completely as possible so the request can be implemented without further back-and-forth.
+
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: The full name of the new activity as it should appear in the system.
+      placeholder: e.g., Photography Club
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Activity Description
+      description: A brief description of what the activity involves. This will be shown to students on the activities page.
+      placeholder: e.g., Learn photography fundamentals, composition techniques, and photo editing using school cameras and software.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: meeting-days
+    attributes:
+      label: Meeting Days
+      description: Select all days when this activity meets.
+      options:
+        - label: Monday
+        - label: Tuesday
+        - label: Wednesday
+        - label: Thursday
+        - label: Friday
+        - label: Saturday
+        - label: Sunday
+    validations:
+      required: true
+
+  - type: input
+    id: start-time
+    attributes:
+      label: Start Time
+      description: The time the activity starts, in 24-hour format (HH:MM).
+      placeholder: e.g., 15:30
+    validations:
+      required: true
+
+  - type: input
+    id: end-time
+    attributes:
+      label: End Time
+      description: The time the activity ends, in 24-hour format (HH:MM).
+      placeholder: e.g., 17:00
+    validations:
+      required: true
+
+  - type: input
+    id: max-participants
+    attributes:
+      label: Maximum Number of Participants
+      description: The maximum number of students that can sign up for this activity.
+      placeholder: e.g., 20
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: How will you know the change has been correctly implemented?
+      value: |
+        - [ ] The new activity appears on the activities page visible to students
+        - [ ] The activity shows the correct name, description, schedule, and capacity
+        - [ ] Students can sign up for the activity (up to the maximum number of participants)
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information relevant to this request (e.g., faculty sponsor, room number, special requirements).
+      placeholder: e.g., This club is sponsored by Ms. Rivera and will meet in Room 204.
