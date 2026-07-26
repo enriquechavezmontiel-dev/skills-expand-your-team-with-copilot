@@ -480,8 +480,10 @@ document.addEventListener("DOMContentLoaded", () => {
         grouped[activityType][name] = details;
       });
 
-      // Render each group with a header
-      Object.entries(grouped).forEach(([type, activities]) => {
+      // Render each group with a header (in defined category order)
+      const categoryOrder = ["sports", "arts", "academic", "community", "technology"];
+      categoryOrder.filter((type) => grouped[type]).forEach((type) => {
+        const activities = grouped[type];
         const typeInfo = activityTypes[type];
         const groupHeader = document.createElement("div");
         groupHeader.className = "activity-group-header";
