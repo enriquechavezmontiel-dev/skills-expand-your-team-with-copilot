@@ -1,10 +1,11 @@
 /* Color palette */
 :root {
   /* Primary colors */
-  --primary: #1a237e;
-  --primary-light: #534bae;
-  --primary-dark: #000051;
-  --primary-text: #ffffff;
+  --primary: #7ac943;
+  --primary-rgb: 122, 201, 67;
+  --primary-light: #9fe06a;
+  --primary-dark: #5da12f;
+  --primary-text: #173d0f;
 
   /* Secondary colors */
   --secondary: #ff6f00;
@@ -13,7 +14,7 @@
   --secondary-text: #ffffff;
 
   /* Neutral colors */
-  --background: #f5f5f5;
+  --background: #f8ffee;
   --surface: #ffffff;
   --text-primary: #333333;
   --text-secondary: #666666;
@@ -39,6 +40,26 @@
   font-family: Arial, sans-serif;
 }
 
+html {
+  background-color: var(--background);
+  background-image: linear-gradient(
+      115deg,
+      rgba(var(--primary-rgb), 0.18) 0%,
+      rgba(var(--primary-rgb), 0.18) 2px,
+      transparent 2px,
+      transparent 95px
+    ),
+    linear-gradient(
+      65deg,
+      rgba(var(--primary-rgb), 0.14) 0%,
+      rgba(var(--primary-rgb), 0.14) 2px,
+      transparent 2px,
+      transparent 120px
+    );
+  background-size: 180px 180px, 220px 220px;
+  animation: branch-flow 45s linear infinite;
+}
+
 body {
   font-family: Arial, sans-serif;
   line-height: 1.4;
@@ -46,7 +67,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 12px;
-  background-color: var(--background);
+  background-color: transparent;
   font-size: 0.9rem;
 }
 
@@ -93,6 +114,35 @@ section h3 {
   border-bottom: 1px solid var(--border);
   color: var(--primary);
   font-size: 1.1rem;
+}
+
+.mascot-showcase {
+  margin-bottom: 15px;
+}
+
+.mascot-showcase h2 {
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+.mascot-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.mascot-gallery img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  background-color: #ffffff;
+  border: 2px solid var(--primary-light);
+  border-radius: 10px;
+  padding: 6px;
 }
 
 /* New Layout Styles */
@@ -392,6 +442,15 @@ button {
   }
   100% {
     background-position: 200% 0;
+  }
+}
+
+@keyframes branch-flow {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 220px 260px, -180px 200px;
   }
 }
 
