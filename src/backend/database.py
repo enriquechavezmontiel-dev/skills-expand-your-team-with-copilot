@@ -124,7 +124,7 @@ initial_activities = {
         "difficulty": "Advanced"
     },
     "Manga Maniacs": {
-        "description": "Explore the fantastic stories of the most interesting characters from Japanese Manga (graphic novels).",
+        "description": "Jump into the exciting world of Japanese manga, where bold heroes, fierce rivals, and unforgettable stories come to life.",
         "schedule": "Tuesdays, 7:00 PM - 8:00 PM",
         "schedule_details": {
             "days": ["Tuesday"],
