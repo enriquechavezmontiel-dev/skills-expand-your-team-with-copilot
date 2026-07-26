@@ -1,0 +1,66 @@
+name: Update Activity Capacity
+description: Request a change to the maximum number of participants allowed in an activity
+title: "Update Capacity: [Activity Name]"
+labels: ["enhancement", "activities"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to request a change to the maximum number of participants for an existing activity. This is useful when room capacity changes, additional equipment becomes available, or enrollment needs to be adjusted.
+
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: The exact name of the activity, as it currently appears in the system.
+      placeholder: e.g., Art Club
+    validations:
+      required: true
+
+  - type: input
+    id: new-capacity
+    attributes:
+      label: New Maximum Participants
+      description: The new maximum number of students allowed to enroll in this activity.
+      placeholder: e.g., 20
+    validations:
+      required: true
+
+  - type: dropdown
+    id: change-direction
+    attributes:
+      label: Capacity Change Direction
+      description: Are you increasing or decreasing the capacity?
+      options:
+        - Increasing (adding more spots)
+        - Decreasing (reducing available spots)
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Change
+      description: Briefly explain why the capacity needs to change.
+      placeholder: e.g., We received a donation of 5 additional easels, so we can accommodate more students in Art Club.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: How will you know the change has been correctly implemented?
+      value: |
+        - [ ] The activity page shows the updated maximum participant count
+        - [ ] If decreasing capacity below the current enrollment, existing participants are not removed
+        - [ ] New sign-ups are correctly limited to the new maximum
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other relevant information.
+      placeholder: e.g., If decreasing capacity, please clarify how to handle students already enrolled beyond the new limit.

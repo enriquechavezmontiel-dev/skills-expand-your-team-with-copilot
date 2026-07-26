@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: General Question or Feedback
+    url: https://github.com/enriquechavezmontiel-dev/skills-expand-your-team-with-copilot/discussions
+    about: For general questions or feedback not covered by the above templates, please start a discussion.
